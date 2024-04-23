@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="{{ form_action }}" method="post" enctype = "multipart/form-data"><br/>
+    Username: <input name="username" type="text"/><br/>
+    Password: <input name="password" type="password"/><br/>
+    <input type="submit" name="action" value="Login"/>
+    <input type="submit" name="action" value="Register"/>
+
+    <p id="message">{{ message }}</p>
+</form>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Report Parameters</h1>
+<ul>
+    <li><strong>output</strong> - csv, json, or html.</li>
+    If not provided, default to html, which should result in an ordinary HTML table of data.</br>
+    If a CSV is requested, it should generate a CSV file, and provide HTML with a link to the file.</br>
+    If json is requested, it should return JSON text.</li>
+    <li><strong>start_date</strong> - only reports after this date</li>
+    <li><strong>end_date</strong> - only reports before this date</li>
+    <li><strong>lat, lng, dist</strong> - only reports within dist (km) of this lat/lng</li>
+    <li><strong>max</strong> - only this number of reports, if not provided, return all of them</li>
+    <li><strong>sort</strong> - if not provided, sort newest to oldest. If provided, sort as specified (oldest or newest)</li>
+</ul>
+
+</br>
+<h3>Modify the URL to sort and choose the data regarding your needs:</h3>
+<strong>Example URL:</strong> {{ url }}data?output=html&start_date=2022-01-01&end_date=2022-12-31&lat=40.7128&lng=-74.0060&dist=10&max=100&sort=newest
+</br>
+</br>
+<h3>Download files:</h3>
+<p>Download the files by using the provided paths in the data:</p>
+<strong>Example URL:</strong> {{ url }}files/20240416-163207_example.jpg
+
+{% endblock content %}

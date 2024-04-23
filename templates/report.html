@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Your report:</h1>
+
+<p>Username: {{ username }}</p>
+<p>User IP: {{ user_ip }}</p>
+<p>GPS Coordinates: {{ gps_coordinates }}</p>
+<p>Location: {{ state }}, {{ country }}</p>
+<p>Local weather: {{ weather_data }}</p>
+<p>Description: {{ description }} (Category: {{ category }})</p>
+<p>File Path: {{ file_path }}</p>
+
+<br/>
+<form action="/data" method="get">
+    <button type="submit">Got to report table</button>
+</form>
+<br/>
+
+<form action="/data/help" method="get">
+    <button type="submit">Help</button>
+</form>
+
+
+{% endblock content %}

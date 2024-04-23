@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    h1 {
+        margin-bottom: 0px; /* Adjust this value to change the space below the title */
+    }
+    .gps_coordinates {
+        margin-top: 10px;
+        margin-bottom: 20px; /* Adjust this value to change the space below the button */
+        line-height: 1;
+    }
+    .location-input {
+        margin-top: 10px;
+        margin-bottom: 10px; /* Adjust this value to change the space below the location input */
+    }
+    .description{
+        margin-top: 10px;
+        margin-bottom: 10px; /* Adjust this value to change the space below the description */
+        text-align: start;
+        display: flex;
+        align-items: top; /* Aligns the items vertically in the center */
+    }
+    .description textarea {
+        width: 300px;  /* Adjust this value to set the width of the textarea */
+        height: 100px; /* Adjust this value to set the height of the textarea */
+        resize: none;
+    }
+    .file-input {
+        margin-top: -10px;
+        margin-bottom: 10px; /* Adjust this value to change the space below the file input */
+    }
+    .submit-button {
+        height: 70px;
+        width: 300px;
+        font-size: 24px;
+    }
+</style>
+<form action="/report" method="post" enctype = "multipart/form-data">
+    <h1>Create your report</h1>
+
+    <p>Your API Key: {{ api_key }} </p>
+    <input type="hidden" name="api_key" value="{{ api_key }}"/>
+
+    <div class="gps_coordinates">
+        <h3>The gps coordinates from the IP: {{ user_ip }}</h3>
+        <input type="hidden" name="user_ip" value="{{ user_ip }}"/>
+        <p>GPS Latitude: {{ gps_lat }}</p>
+        <p>GPS Longitude: {{ gps_long }}</p>
+        <input type="hidden" name="gps_lat" value="{{ gps_lat }}"/>
+        <input type="hidden" name="gps_long" value="{{ gps_long }}"/>
+    </div>
+
+    <p style="margin-bottom: 2px;">Or enter your location manually: (If "Get my coordinates" doesn't work)</p>
+    <div class="location-input">
+        GPS Latitude (between -90.0 and +90.0): <input name="man_gps_lat" type="text"/><br/>
+        GPS Longitude (between -180.0 and +180.0): <input name="man_gps_long" type="text"/><br/>
+    </div>
+
+    <h3>Description:</h3>
+    <div class="description">
+        <textarea name="description"></textarea>
+    </div>
+
+    <h3>File:</h3>
+    <div class="file-input">  
+        <input name="file" type="file"/>
+    </div><br/>  
+
+    <button type="submit" name = "submit" value="true" class="submit-button">Submit form</button>
+</form></br>
+
+<form action="/logout" method="post">
+    <input type="submit" value="Logout"/>
+</form>
+{% endblock content %}
