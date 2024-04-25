@@ -301,7 +301,7 @@ def get_address(gps_coordinates): # Format of the gps_coordinates: "32.8407, -83
 
 def get_category(description):
 
-    apikey = "AIzaSyCemhnpQn1qgLq6Mf_m7NLzCiuXZyfTMQg" # API key for the Google API
+    apikey = os.getenv('geminiAPI') # API key for the Google API
     host = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
     params = {"key": apikey}
     body = {"contents": [{"parts": [{"text": f"Category the following string as dangerous, offensive or normal. Only return one word. String: {description}"}]}]}
